@@ -9,6 +9,7 @@
         :root {
             --primary: #ffffff;
             --accent: #007AFF; 
+            --venmo: #3d95ce; 
             --bg: #0a0a0a;
             --card-bg: #1a1a1a;
             --input-bg: #000000;
@@ -88,7 +89,6 @@
             outline: none;
         }
 
-        /* Adjusted Height for larger Event Details box */
         textarea {
             height: 180px; 
             resize: none;
@@ -107,7 +107,20 @@
             transition: transform 0.2s;
         }
 
-        button:active {
+        .btn-venmo {
+            background: var(--venmo);
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+
+        button:active, .btn-venmo:active {
             transform: scale(0.98);
         }
 
@@ -159,7 +172,12 @@
         <div class="section-box">
             <input type="text" id="eventCode" placeholder="ENTER EVENT CODE" style="text-align: center; text-transform: uppercase;">
             <button onclick="checkCode()">VIEW PHOTOS</button>
-            <div id="error" class="error-msg">Code not found. Please check your card.</div>
+            <div id="error" class="error-msg">Code not found.</div>
+            
+            <div style="margin-top: 35px; border-top: 1px solid #333; padding-top: 25px;">
+                <div style="font-size: 13px; opacity: 0.6; margin-bottom: 12px;">Enjoying your portraits?</div>
+                <a href="https://venmo.com/code?user_id=2277076526694400642&created=1774596396" class="btn-venmo">TIP THE TEAM</a>
+            </div>
         </div>
 
         <div class="section-box">
