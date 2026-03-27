@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levy Photos | Live Event Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --accent: #007AFF; /* Apple-style Blue */
+            --bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 40px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .hero-text {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* --- Option 1: Event Code Logic --- */
+        .input-group {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            background: #000;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            box-sizing: border-box;
+            text-transform: uppercase;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            margin-top: 60px;
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.7;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 30px;
+            font-size: 12px;
+            opacity: 0.5;
+        }
+
+        .error-msg {
+            color: #ff453a;
+            font-size: 14px;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">LEVY<span>PHOTOS</span></div>
+        
+        <div class="hero-text">Enter your event code below to access your live gallery.</div>
+
+        <div class="input-group">
+            <input type="text" id="eventCode" placeholder="EVENT CODE" autofocus>
+            <button onclick="checkCode()">VIEW MY PHOTOS</button>
+            <div id="error" class="error-msg">Code not found. Please check your card.</div>
+        </div>
+
+        <div class="about-section">
+            <strong>About Levy Photos</strong><br>
+            A partnership between Le and Vy. We provide studio-quality portraits delivered instantly to your device at high-end weddings and events.
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Levy Photos | San Jose, CA
+    </footer>
+
+    <script>
+        function checkCode() {
+            const code = document.getElementById('eventCode').value.trim().toUpperCase();
+            const error = document.getElementById('error');
+
+            /** * LEVY PHOTOS SWITCHBOARD
+             * Update these links for each new event.
+             **/
+            const events = {
+                "STANFORD26": "https://zno.instant.link/demo1", // Wedding at Stanford
+                "GALA20":     "https://zno.instant.link/demo2", // Corporate Event
+                "TEST":       "https://zno.instant.link/demo3"  // Testbench code
+            };
+
+            if (events[code]) {
+                error.style.display = "none";
+                window.location.href = events[code];
+            } else {
+                error.style.display = "block";
+            }
+        }
+
+        // Allow "Enter" key to trigger button
+        document.getElementById("eventCode").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                checkCode();
+            }
+        });
+    </script>
+
+</body>
+</html>
