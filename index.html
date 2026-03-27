@@ -49,7 +49,6 @@
             opacity: 0.9;
         }
 
-        /* --- Option 1: Event Code Logic --- */
         .input-group {
             background: var(--card-bg);
             padding: 30px;
@@ -88,14 +87,22 @@
             transform: scale(0.98);
         }
 
-        /* --- About Section --- */
         .about-section {
             margin-top: 60px;
             font-size: 14px;
             line-height: 1.6;
-            opacity: 0.7;
+            opacity: 0.8;
             border-top: 1px solid #333;
             padding-top: 30px;
+        }
+
+        .phone-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
         }
 
         footer {
@@ -103,6 +110,7 @@
             padding: 30px;
             font-size: 12px;
             opacity: 0.5;
+            text-align: center;
         }
 
         .error-msg {
@@ -128,12 +136,13 @@
 
         <div class="about-section">
             <strong>About Levy Photos</strong><br>
-            A partnership between Le and Vy. We provide studio-quality portraits delivered instantly to your device at high-end weddings and events.
+            A partnership between Le and Vy. We provide studio-quality portraits delivered instantly to your device at high-end weddings and events.<br>
+            <a href="tel:4084017351" class="phone-link">408.401.7351</a>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 Levy Photos | San Jose, CA
+        &copy; 2026 Levy Photos | San Jose, CA | 408.401.7351
     </footer>
 
     <script>
@@ -145,9 +154,9 @@
              * Update these links for each new event.
              **/
             const events = {
-                "01": "https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/", // Wedding at Stanford
-                "GALA20":     "https://zno.instant.link/demo2", // Corporate Event
-                "TEST":       "https://zno.instant.link/demo3"  // Testbench code
+                "01": "https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/", 
+                "GALA20": "https://zno.instant.link/demo2", 
+                "TEST": "https://zno.instant.link/demo3"  
             };
 
             if (events[code]) {
@@ -158,7 +167,6 @@
             }
         }
 
-        // Allow "Enter" key to trigger button
         document.getElementById("eventCode").addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
                 checkCode();
