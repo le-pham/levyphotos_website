@@ -8,8 +8,9 @@
     <style>
         :root {
             --primary: #ffffff;
+            --secondary: #a0a0a0;
             --accent: #007AFF; 
-            --venmo: #3d95ce; 
+            --slate-btn: #2c2c2e; /* Apple-style dark gray/slate */
             --bg: #0a0a0a;
             --card-bg: #1a1a1a;
             --input-bg: #000000;
@@ -39,16 +40,24 @@
             font-size: 28px;
             font-weight: 700;
             letter-spacing: -1px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         .logo span {
             color: var(--accent);
         }
 
+        .about-top {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.85;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
         .hero-text {
             font-size: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             opacity: 0.9;
             font-weight: 700;
         }
@@ -107,46 +116,55 @@
             transition: transform 0.2s;
         }
 
-        .btn-venmo {
-            background: var(--venmo);
+        /* --- Updated Sophisticated Slate Tip Button --- */
+        .btn-tip {
+            background: var(--slate-btn);
             text-decoration: none;
             display: block;
             padding: 15px;
             border-radius: 10px;
-            color: white;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             margin-top: 15px;
-            transition: transform 0.2s;
+            transition: transform 0.2s, background-color 0.2s, border 0.2s;
+            border: 1px solid #3a3a3c;
         }
 
-        button:active, .btn-venmo:active {
+        .btn-tip:hover {
+            background: #3a3a3c;
+            border-color: #48484a;
+        }
+
+        button:active, .btn-tip:active {
             transform: scale(0.98);
         }
 
-        .about-section {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.8;
-            border-top: 1px solid #333;
+        .contact-section-subtle {
+            margin-top: 10px;
             padding-top: 30px;
+            text-align: center;
+            width: 100%;
         }
 
-        .contact-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: var(--accent);
+        .contact-section-subtle a {
+            display: block;
+            color: var(--primary);
             text-decoration: none;
-            font-weight: 700;
+            font-size: 18px; 
+            font-weight: 400;
+            margin-bottom: 12px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
         }
 
         footer {
             margin-top: auto;
-            padding: 30px;
+            padding: 40px 20px;
             font-size: 11px;
-            opacity: 0.5;
+            opacity: 0.4;
             text-align: center;
-            line-height: 1.8;
+            width: 100%;
         }
 
         .error-msg {
@@ -168,6 +186,10 @@
     <div class="container">
         <div class="logo">LEVY<span>PHOTOS</span></div>
         
+        <div class="about-top">
+            We provide studio-quality portraits delivered instantly to your device at high-end weddings and events.
+        </div>
+        
         <div class="hero-text">Access Your Event Gallery</div>
         <div class="section-box">
             <input type="text" id="eventCode" placeholder="ENTER EVENT CODE" style="text-align: center; text-transform: uppercase;">
@@ -176,7 +198,7 @@
             
             <div style="margin-top: 35px; border-top: 1px solid #333; padding-top: 25px;">
                 <div style="font-size: 13px; opacity: 0.6; margin-bottom: 12px;">Enjoying your portraits?</div>
-                <a href="https://venmo.com/code?user_id=2277076526694400642&created=1774596396" class="btn-venmo">TIP THE TEAM</a>
+                <a href="https://venmo.com/code?user_id=2277076526694400642&created=1774596396" class="btn-tip">TIP THE TEAM</a>
             </div>
         </div>
 
@@ -197,30 +219,25 @@
             </form>
         </div>
 
-        <div class="about-section">
-            <strong>About Levy Photos</strong><br>
-            We provide studio-quality portraits delivered instantly to your device at high-end weddings and events.<br>
-            <a href="tel:4084017351" class="contact-link">408.401.7351</a><br>
-            <a href="mailto:hello@levyphotos.com" class="contact-link">hello@levyphotos.com</a>
+        <div class="contact-section-subtle">
+            <a href="tel:4084017351">408.401.7351</a>
+            <a href="mailto:hello@levyphotos.com">hello@levyphotos.com</a>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 Levy Photos | San Jose, CA<br>
-        408.401.7351 | hello@levyphotos.com
+        &copy; 2026 Levy Photos | San Jose, CA
     </footer>
 
     <script>
         function checkCode() {
             const code = document.getElementById('eventCode').value.trim().toUpperCase();
             const error = document.getElementById('error');
-
             const events = {
                 "01": "https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/", 
                 "GALA20": "https://zno.instant.link/demo2", 
                 "TEST": "https://zno.instant.link/demo3"  
             };
-
             if (events[code]) {
                 error.style.display = "none";
                 window.location.href = events[code];
@@ -228,11 +245,8 @@
                 error.style.display = "block";
             }
         }
-
         document.getElementById("eventCode").addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) {
-                checkCode();
-            }
+            if (event.keyCode === 13) { checkCode(); }
         });
     </script>
 
