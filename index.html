@@ -8,9 +8,10 @@
     <style>
         :root {
             --primary: #ffffff;
-            --accent: #007AFF; /* Apple-style Blue */
+            --accent: #007AFF; 
             --bg: #0a0a0a;
             --card-bg: #1a1a1a;
+            --input-bg: #000000;
         }
 
         body {
@@ -30,6 +31,7 @@
             max-width: 400px;
             text-align: center;
             padding-top: 50px;
+            padding-bottom: 50px;
         }
 
         .logo {
@@ -47,27 +49,48 @@
             font-size: 18px;
             margin-bottom: 30px;
             opacity: 0.9;
+            font-weight: 700;
         }
 
-        .input-group {
+        .section-box {
             background: var(--card-bg);
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
         }
 
-        input[type="text"] {
+        label {
+            display: block;
+            text-align: left;
+            font-size: 11px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"], input[type="email"], textarea {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
             border-radius: 10px;
             border: 1px solid #333;
-            background: #000;
+            background: var(--input-bg);
             color: white;
             font-size: 16px;
-            text-align: center;
             box-sizing: border-box;
-            text-transform: uppercase;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
         }
 
         button {
@@ -88,7 +111,6 @@
         }
 
         .about-section {
-            margin-top: 60px;
             font-size: 14px;
             line-height: 1.6;
             opacity: 0.8;
@@ -96,21 +118,21 @@
             padding-top: 30px;
         }
 
-        .phone-link {
+        .contact-link {
             display: inline-block;
             margin-top: 10px;
             color: var(--accent);
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
         }
 
         footer {
             margin-top: auto;
             padding: 30px;
-            font-size: 12px;
+            font-size: 11px;
             opacity: 0.5;
             text-align: center;
+            line-height: 1.8;
         }
 
         .error-msg {
@@ -119,6 +141,12 @@
             margin-top: 15px;
             display: none;
         }
+
+        h3 {
+            margin-top: 0;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
     </style>
 </head>
 <body>
@@ -126,23 +154,40 @@
     <div class="container">
         <div class="logo">LEVY<span>PHOTOS</span></div>
         
-        <div class="hero-text">Enter your event code below to access your live gallery.</div>
-
-        <div class="input-group">
-            <input type="text" id="eventCode" placeholder="EVENT CODE" autofocus>
-            <button onclick="checkCode()">VIEW MY PHOTOS</button>
+        <div class="hero-text">Access Your Event Gallery</div>
+        <div class="section-box">
+            <input type="text" id="eventCode" placeholder="ENTER EVENT CODE" style="text-align: center; text-transform: uppercase;">
+            <button onclick="checkCode()">VIEW PHOTOS</button>
             <div id="error" class="error-msg">Code not found. Please check your card.</div>
+        </div>
+
+        <div class="section-box">
+            <h3>Book an Event</h3>
+            <form action="https://formspree.io/f/mvzvgvro" method="POST">
+                <label>NAME</label>
+                <input type="text" name="name" required>
+                
+                <label>EMAIL</label>
+                <input type="email" name="email" required>
+                
+                <label>EVENT DETAILS</label>
+                <textarea name="message" placeholder="Date, Venue, or Event Type..." required></textarea>
+                
+                <button type="submit">SEND INQUIRY</button>
+            </form>
         </div>
 
         <div class="about-section">
             <strong>About Levy Photos</strong><br>
-            A partnership between Le and Vy. We provide studio-quality portraits delivered instantly to your device at high-end weddings and events.<br>
-            <a href="tel:4084017351" class="phone-link">408.401.7351</a>
+            We provide studio-quality portraits delivered instantly to your device at high-end weddings and events.<br>
+            <a href="tel:4084017351" class="contact-link">408.401.7351</a><br>
+            <a href="mailto:hello@levyphotos.com" class="contact-link">hello@levyphotos.com</a>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 Levy Photos | San Jose, CA | 408.401.7351
+        &copy; 2026 Levy Photos | San Jose, CA<br>
+        408.401.7351 | hello@levyphotos.com
     </footer>
 
     <script>
@@ -150,9 +195,6 @@
             const code = document.getElementById('eventCode').value.trim().toUpperCase();
             const error = document.getElementById('error');
 
-            /** * LEVY PHOTOS SWITCHBOARD
-             * Update these links for each new event.
-             **/
             const events = {
                 "01": "https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/", 
                 "GALA20": "https://zno.instant.link/demo2", 
