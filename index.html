@@ -88,8 +88,9 @@
             outline: none;
         }
 
+        /* Adjusted Height for larger Event Details box */
         textarea {
-            height: 100px;
+            height: 180px; 
             resize: none;
         }
 
@@ -164,6 +165,7 @@
         <div class="section-box">
             <h3>Book an Event</h3>
             <form action="https://formspree.io/f/mvzvgvro" method="POST">
+                <input type="hidden" name="_subject" value="New Levy Photos Inquiry">
                 <label>NAME</label>
                 <input type="text" name="name" required>
                 
