@@ -55,18 +55,20 @@
             padding: 0 10px;
         }
 
-        .hero-text {
-            font-size: 20px;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-
         .section-box {
             background: var(--card-bg);
             padding: 35px 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             margin-bottom: 40px;
+        }
+
+        /* --- Merged Title Style --- */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: block;
         }
 
         label {
@@ -97,9 +99,8 @@
             outline: none;
         }
 
-        /* --- Double Height Event Details Box --- */
         textarea {
-            height: 360px; 
+            height: 360px; /* Double height */
             resize: none;
             line-height: 1.5;
         }
@@ -179,12 +180,6 @@
             margin-top: 15px;
             display: none;
         }
-
-        h3 {
-            margin-top: 0;
-            font-size: 22px;
-            margin-bottom: 25px;
-        }
     </style>
 </head>
 <body>
@@ -196,8 +191,8 @@
             We provide studio-quality portraits delivered instantly to your device at high-end weddings and events.
         </div>
         
-        <div class="hero-text">Access Your Event Gallery</div>
         <div class="section-box">
+            <span class="section-title">Access Your Event Gallery</span>
             <input type="text" id="eventCode" placeholder="ENTER EVENT CODE" style="text-align: center; text-transform: uppercase;">
             <button onclick="checkCode()">VIEW PHOTOS</button>
             <div id="error" class="error-msg">Code not found.</div>
@@ -209,7 +204,7 @@
         </div>
 
         <div class="section-box">
-            <h3>Book an Event</h3>
+            <span class="section-title">Book an Event</span>
             <form action="https://formspree.io/f/mvzvgvro" method="POST">
                 <input type="hidden" name="_subject" value="New Levy Photos Inquiry">
                 <label>NAME</label>
