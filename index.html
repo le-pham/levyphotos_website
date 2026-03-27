@@ -80,7 +80,7 @@
             letter-spacing: 1px;
         }
 
-        input[type="text"], input[type="email"], textarea {
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
             width: 100%;
             padding: 18px;
             margin-bottom: 25px;
@@ -93,7 +93,7 @@
             font-family: inherit;
         }
 
-        input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+        input:focus, textarea:focus {
             border-color: var(--accent);
             outline: none;
         }
@@ -206,11 +206,15 @@
             <span class="section-title">Contact Us</span>
             <form action="https://formspree.io/f/mvzvgvro" method="POST">
                 <input type="hidden" name="_subject" value="New Levy Photos Inquiry/Feedback">
+                
                 <label>NAME</label>
                 <input type="text" name="name" required>
                 
                 <label>EMAIL</label>
                 <input type="email" name="email" required>
+
+                <label>PHONE NUMBER (OPTIONAL)</label>
+                <input type="tel" name="phone" placeholder="000-000-0000">
                 
                 <label>MESSAGE OR FEEDBACK</label>
                 <textarea name="message" placeholder="Booking inquiry? Feedback for the team? Leave your message here..." required></textarea>
@@ -233,11 +237,13 @@
         function checkCode() {
             const code = document.getElementById('eventCode').value.trim().toUpperCase();
             const error = document.getElementById('error');
+
             const events = {
                 "01": "https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/", 
                 "GALA20": "https://zno.instant.link/demo2", 
                 "TEST": "https://zno.instant.link/demo3"  
             };
+
             if (events[code]) {
                 error.style.display = "none";
                 window.location.href = events[code];
@@ -245,8 +251,11 @@
                 error.style.display = "block";
             }
         }
+
         document.getElementById("eventCode").addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) { checkCode(); }
+            if (event.keyCode === 13) {
+                checkCode();
+            }
         });
     </script>
 
