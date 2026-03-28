@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Event Gallery | Levy Photos</title>
+    <meta name="description" content="Access your live event gallery. Enter your event code to view and download your professional portraits instantly.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Live Event Gallery | Levy Photos">
+    <meta property="og:description" content="Enter your event code to view and download your professional portraits instantly.">
+    <meta property="og:image" content="https://levyphotos.com/og-image.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -42,6 +49,18 @@
         }
 
         .logo span { color: var(--accent); }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover { opacity: 0.8; }
 
         .about-top {
             font-size: 18px;
@@ -115,7 +134,7 @@
             border: 1px solid #444;
         }
 
-        footer { padding: 40px; font-size: 13px; opacity: 0.5; }
+        footer { padding: 40px; font-size: 13px; opacity: 0.6; }
         .error-msg { color: #ff453a; display: none; margin-top: 15px; }
     </style>
 </head>
@@ -125,6 +144,8 @@
         <a href="/" style="text-decoration: none; color: inherit;">
             <div class="logo">LEVY<span>PHOTOS</span></div>
         </a>
+
+        <a href="/" class="back-link">← BACK TO HOME</a>
         
         <div class="about-top">
             We provide studio-quality portraits<br>

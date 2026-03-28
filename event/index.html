@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Portfolio | Levy Photos</title>
+    <meta name="description" content="Professional event photography portfolio. Corporate galas, fundraisers, and private parties captured with studio quality.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Event Portfolio | Levy Photos">
+    <meta property="og:description" content="Corporate galas, fundraisers, or private parties. Professional coverage for every occasion.">
+    <meta property="og:image" content="https://levyphotos.com/og-image.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -39,6 +46,18 @@
         }
 
         .logo span { color: var(--accent); }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover { opacity: 0.8; }
 
         .header { margin-bottom: 60px; }
         h1 { font-size: 36px; margin-bottom: 15px; }
@@ -80,7 +99,7 @@
         .card-title { font-weight: 700; font-size: 20px; display: block; margin-bottom: 5px; }
         .card-tag { font-size: 14px; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px; }
 
-        footer { padding: 60px; font-size: 13px; opacity: 0.4; }
+        footer { padding: 60px; font-size: 13px; opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -89,6 +108,8 @@
         <a href="/" style="text-decoration: none; color: inherit;">
             <div class="logo">LEVY<span>PHOTOS</span></div>
         </a>
+
+        <a href="/" class="back-link">← BACK TO HOME</a>
 
         <div class="header">
             <h1>Event Portfolio</h1>

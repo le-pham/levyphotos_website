@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Levy Photos</title>
+    <title>Wedding Portfolio | Levy Photos</title>
+    <meta name="description" content="Elegant wedding photography portfolio. Capturing timeless moments and emotions with a premium cinematic style.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Wedding Portfolio | Levy Photos">
+    <meta property="og:description" content="Elegant wedding photography. Capturing timeless moments and emotions with a premium cinematic style.">
+    <meta property="og:image" content="https://levyphotos.com/og-image.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -31,6 +38,18 @@
 
         .logo { font-size: 32px; font-weight: 700; margin-bottom: 25px; }
         .logo span { color: var(--accent); }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover { opacity: 0.8; }
 
         h1 { font-size: 32px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
 
@@ -66,7 +85,7 @@
             margin-top: 20px;
         }
 
-        footer { padding: 60px; font-size: 13px; opacity: 0.4; }
+        footer { padding: 60px; font-size: 13px; opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -76,7 +95,11 @@
             <div class="logo">LEVY<span>PHOTOS</span></div>
         </a>
 
-        <h1>Wedding Portfolio</h1> <div class="portfolio-grid">
+        <a href="/" class="back-link">← BACK TO HOME</a>
+
+        <h1>Wedding Portfolio</h1> 
+        
+        <div class="portfolio-grid">
             <img src="https://via.placeholder.com/600x800/222/fff?text=Photo+1" alt="Portfolio Image">
             <img src="https://via.placeholder.com/600x400/222/fff?text=Photo+2" alt="Portfolio Image">
             <img src="https://via.placeholder.com/600x900/222/fff?text=Photo+3" alt="Portfolio Image">
