@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levy Photos | Live Event Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #cccccc;
+            --accent: #007AFF; 
+            --slate-btn: #2c2c2e; 
+            --bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --input-bg: #000000;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .about-top {
+            font-size: 18px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 45px;
+            padding: 0 10px;
+        }
+
+        .section-box {
+            background: var(--card-bg);
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-size: 13px;
+            margin-bottom: 10px;
+            opacity: 0.7;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            border: 1px solid #444;
+            background: var(--input-bg);
+            color: white;
+            font-size: 18px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        textarea {
+            height: 360px; 
+            resize: none;
+            line-height: 1.5;
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            border-radius: 12px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .tip-prompt {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            font-weight: 400;
+            color: var(--secondary);
+        }
+
+        .btn-tip {
+            background: var(--slate-btn);
+            text-decoration: none;
+            display: block;
+            padding: 18px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: transform 0.2s, background-color 0.2s;
+            border: 1px solid #444;
+        }
+
+        .btn-tip:hover {
+            background: #3a3a3c;
+        }
+
+        button:active, .btn-tip:active {
+            transform: scale(0.98);
+        }
+
+        .contact-section-subtle {
+            margin-top: 15px;
+            padding-top: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .contact-section-subtle a {
+            display: block;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px 20px;
+            font-size: 13px;
+            opacity: 0.5;
+            text-align: center;
+            width: 100%;
+        }
+
+        .error-msg {
+            color: #ff453a;
+            font-size: 16px;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">LEVY<span>PHOTOS</span></div>
+        
+        <div class="about-top">
+            We provide studio-quality portraits<br>
+            delivered instantly to your device<br> 
+            at high-end weddings and events.
+        </div>
+        
+        <div class="section-box">
+            <span class="section-title">Access Your Event Gallery</span>
+            <input type="text" id="eventCode" placeholder="ENTER EVENT CODE" style="text-align: center; text-transform: uppercase;">
+            <button onclick="checkCode()">VIEW PHOTOS</button>
+            <div id="error" class="error-msg">Code not found.</div>
+            
+            <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 30px;">
+                <div class="tip-prompt">Enjoying your portraits?</div>
+                <a href="https://venmo.com/code?user_id=2277076526694400642&created=1774596396" class="btn-tip">TIP THE TEAM</a>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <span class="section-title">Contact Us</span>
+            <form action="https://formspree.io/f/mvzvgvro" method="POST">
+                <input type="hidden" name="_subject" value="New Levy Photos Inquiry/Feedback">
+                
+                <label>NAME</label>
+                <input type="text" name="name" required>
+                
+                <label>EMAIL</label>
+                <input type="email" name="email" required>
+
+                <label>PHONE NUMBER</label>
+                <input type="tel" name="phone">
+                
+                <label>MESSAGE OR FEEDBACK</label>
+                <textarea name="message" placeholder="Booking inquiry? Feedback for the team? Leave your message here..." required></textarea>
+                
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </div>
+
+        <div class="contact-section-subtle">
+            <a href="tel:4084017351">408.401.7351</a>
+            <a href="mailto:hello@levyphotos.com">hello@levyphotos.com</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Levy Photos | San Jose, CA
+    </footer>
+
+    <script>
+        function checkCode() {
+            const code = document.getElementById('eventCode').value.trim().toUpperCase();
+            const error = document.getElementById('error');
+
+            const events = {
+                "01": "https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/", 
+                "GALA20": "https://zno.instant.link/demo2", 
+                "TEST": "https://zno.instant.link/demo3"  
+            };
+
+            if (events[code]) {
+                error.style.display = "none";
+                window.location.href = events[code];
+            } else {
+                error.style.display = "block";
+            }
+        }
+
+        document.getElementById("eventCode").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                checkCode();
+            }
+        });
+    </script>
+
+</body>
+</html>
