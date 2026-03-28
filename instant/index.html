@@ -49,15 +49,17 @@
 
         .back-link {
             display: inline-block;
-            color: var(--accent);
+            color: white;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
+            font-weight: 400;
+            font-size: 12px;
             margin-bottom: 30px;
             transition: opacity 0.2s;
+            opacity: 0.5;
+            letter-spacing: 1px;
         }
 
-        .back-link:hover { opacity: 0.8; }
+        .back-link:hover { opacity: 1; color: var(--accent); }
 
         .header { margin-bottom: 60px; }
         h1 { font-size: 36px; margin-bottom: 15px; }
@@ -105,11 +107,11 @@
 <body>
 
     <div class="container">
+        <a href="/" class="back-link">← BACK TO HOME</a>
+
         <a href="/" style="text-decoration: none; color: inherit;">
             <div class="logo">LEVY<span>PHOTOS</span></div>
         </a>
-
-        <a href="/" class="back-link">← BACK TO HOME</a>
 
         <div class="header">
             <h1>Instant Portrait Station</h1>
