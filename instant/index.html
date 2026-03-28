@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levy Photos | Professional Photography San Jose</title>
+    <title>Instant Portrait Station | Levy Photos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,88 +26,97 @@
 
         .container {
             width: 90%;
-            max-width: 600px;
+            max-width: 900px;
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
         }
 
         .logo {
-            font-size: 42px;
+            font-size: 32px;
             font-weight: 700;
             letter-spacing: -1px;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
         }
 
         .logo span { color: var(--accent); }
 
-        .tagline {
-            font-size: 18px;
-            opacity: 0.7;
-            margin-bottom: 60px;
-        }
+        .header { margin-bottom: 60px; }
+        h1 { font-size: 36px; margin-bottom: 15px; }
+        .description { opacity: 0.7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: auto; }
 
-        /* NAVIGATION GRID */
-        .nav-grid {
+        /* SHOWCASE GRID */
+        .showcase-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .nav-card {
+        .showcase-card {
             background: var(--card-bg);
-            padding: 40px 20px;
             border-radius: 20px;
+            overflow: hidden;
             text-decoration: none;
             color: white;
-            font-weight: 700;
-            font-size: 18px;
-            transition: transform 0.2s, border 0.2s;
-            border: 1px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s;
+            border: 1px solid #333;
+            text-align: left;
         }
 
-        .nav-card:hover {
-            transform: translateY(-5px);
+        .showcase-card:hover {
+            transform: translateY(-10px);
             border-color: var(--accent);
         }
 
-        /* SPECIAL LIVE BUTTON */
-        .live-link {
-            grid-column: span 2;
-            background: var(--accent);
-            padding: 25px;
+        .card-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-color: #222;
         }
 
-        footer {
-            margin-top: auto;
-            padding: 40px;
-            font-size: 13px;
-            opacity: 0.5;
-        }
+        .card-info { padding: 25px; }
+        .card-title { font-weight: 700; font-size: 20px; display: block; margin-bottom: 5px; }
+        .card-tag { font-size: 14px; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px; }
+
+        footer { padding: 60px; font-size: 13px; opacity: 0.4; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="logo">LEVY<span>PHOTOS</span></div>
-        <div class="tagline">Premium Event Photography & Instant Portrait Stations</div>
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="logo">LEVY<span>PHOTOS</span></div>
+        </a>
 
-        <div class="nav-grid">
-            <a href="/live" class="nav-card live-link">FIND YOUR EVENT PHOTOS</a>
-
-            <a href="/wedding" class="nav-card">WEDDINGS</a>
-            <a href="/event" class="nav-card">EVENTS</a>
-            <a href="/birthday" class="nav-card">BIRTHDAYS</a>
-            <a href="/portrait" class="nav-card">PORTRAITS</a>
+        <div class="header">
+            <h1>Instant Portrait Station</h1>
+            <div class="description">
+                Experience the future of event photography. We bring a high-end studio setup to your venue and deliver professional portraits to guests' phones in real-time.
+            </div>
         </div>
 
-        <div style="opacity: 0.8; line-height: 1.6;">
-            Based in San Jose, CA. Specializing in high-end live event 
-            coverage and studio-quality instant delivery.
+        <div class="showcase-grid">
+            <a href="https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/" class="showcase-card" target="_blank">
+                <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Studio+Portraits');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Corporate Event</span>
+                    <span class="card-title">Live Studio Demo</span>
+                </div>
+            </a>
+
+            <a href="#" class="showcase-card">
+                <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Wedding+Gala');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Wedding</span>
+                    <span class="card-title">Stanford Memorial Reception</span>
+                </div>
+            </a>
         </div>
     </div>
 
-    <footer>&copy; 2026 Levy Photos</footer>
+    <footer>&copy; 2026 Levy Photos | San Jose, CA</footer>
 
 </body>
 </html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Levy Photos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --accent: #007AFF; 
+            --bg: #0a0a0a;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .logo { font-size: 32px; font-weight: 700; margin-bottom: 25px; }
+        .logo span { color: var(--accent); }
+
+        h1 { font-size: 32px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* PHOTO MASONRY GRID */
+        .portfolio-grid {
+            column-count: 2;
+            column-gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid { column-count: 1; }
+        }
+
+        .portfolio-grid img {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            display: block;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-grid img:hover { opacity: 0.8; }
+
+        .cta-box { margin-top: 80px; padding: 40px; background: #1a1a1a; border-radius: 20px; }
+        .btn-contact {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        footer { padding: 60px; font-size: 13px; opacity: 0.4; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="logo">LEVY<span>PHOTOS</span></div>
+        </a>
+
+        <h1>Wedding Portfolio</h1> <div class="portfolio-grid">
+            <img src="https://via.placeholder.com/600x800/222/fff?text=Photo+1" alt="Portfolio Image">
+            <img src="https://via.placeholder.com/600x400/222/fff?text=Photo+2" alt="Portfolio Image">
+            <img src="https://via.placeholder.com/600x900/222/fff?text=Photo+3" alt="Portfolio Image">
+            <img src="https://via.placeholder.com/600x600/222/fff?text=Photo+4" alt="Portfolio Image">
+        </div>
+
+        <div class="cta-box">
+            <h2>Interested in booking?</h2>
+            <p>Let's capture your next milestone together.</p>
+            <a href="/live" class="btn-contact">CONTACT US</a>
+        </div>
+    </div>
+
+    <footer>&copy; 2026 Levy Photos | San Jose, CA</footer>
+
+</body>
+</html>
