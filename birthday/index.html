@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Portfolio | Levy Photos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --accent: #007AFF; 
+            --bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .header { margin-bottom: 60px; }
+        h1 { font-size: 36px; margin-bottom: 15px; }
+        .description { opacity: 0.7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: auto; }
+
+        /* SHOWCASE GRID */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .showcase-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, border-color 0.3s;
+            border: 1px solid #333;
+            text-align: left;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-color: #222;
+        }
+
+        .card-info { padding: 25px; }
+        .card-title { font-weight: 700; font-size: 20px; display: block; margin-bottom: 5px; }
+        .card-tag { font-size: 14px; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px; }
+
+        footer { padding: 60px; font-size: 13px; opacity: 0.4; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="logo">LEVY<span>PHOTOS</span></div>
+        </a>
+
+        <div class="header">
+            <h1>Birthday Portfolio</h1>
+            <div class="description">
+                From first birthdays to grand celebrations, we capture the joy and milestones of your special day.
+            </div>
+        </div>
+
+        <div class="showcase-grid">
+            <a href="#" class="showcase-card">
+                <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400/1a1a1a/ffffff?text=First+Birthday');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Milestone</span>
+                    <span class="card-title">Leo's 1st Birthday</span>
+                </div>
+            </a>
+
+            <a href="#" class="showcase-card">
+                <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Sweet+16');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Teen Celebration</span>
+                    <span class="card-title">Sarah's Sweet 16</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>&copy; 2026 Levy Photos | San Jose, CA</footer>
+
+</body>
+</html>
