@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levy Photos | Professional Photography San Jose</title>
+    <title>Levy Photos | Premium Event Photography San Jose</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,7 +26,7 @@
 
         .container {
             width: 90%;
-            max-width: 600px;
+            max-width: 500px;
             text-align: center;
             padding: 80px 20px;
         }
@@ -36,6 +36,7 @@
             font-weight: 700;
             letter-spacing: -1px;
             margin-bottom: 10px;
+            cursor: pointer;
         }
 
         .logo span { color: var(--accent); }
@@ -43,71 +44,94 @@
         .tagline {
             font-size: 18px;
             opacity: 0.7;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            line-height: 1.5;
         }
 
-        /* NAVIGATION GRID */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 60px;
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
         }
 
-        .nav-card {
+        .nav-item {
             background: var(--card-bg);
-            padding: 40px 20px;
-            border-radius: 20px;
+            padding: 25px;
+            border-radius: 15px;
             text-decoration: none;
             color: white;
             font-weight: 700;
             font-size: 18px;
-            transition: transform 0.2s, border 0.2s;
-            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .nav-card:hover {
-            transform: translateY(-5px);
+        .nav-item:hover {
             border-color: var(--accent);
+            transform: scale(1.02);
         }
 
-        /* SPECIAL LIVE BUTTON */
-        .live-link {
-            grid-column: span 2;
+        .live-btn {
             background: var(--accent);
-            padding: 25px;
+            border-color: var(--accent);
+            margin-bottom: 20px;
         }
+
+        .arrow { opacity: 0.5; font-size: 20px; }
 
         footer {
             margin-top: auto;
             padding: 40px;
             font-size: 13px;
-            opacity: 0.5;
+            opacity: 0.4;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="logo">LEVY<span>PHOTOS</span></div>
-        <div class="tagline">Premium Event Photography & Instant Portrait Stations</div>
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="logo">LEVY<span>PHOTOS</span></div>
+        </a>
 
-        <div class="nav-grid">
-            <a href="/live" class="nav-card live-link">FIND YOUR EVENT PHOTOS</a>
-
-            <a href="/wedding" class="nav-card">WEDDINGS</a>
-            <a href="/event" class="nav-card">EVENTS</a>
-            <a href="/birthday" class="nav-card">BIRTHDAYS</a>
-            <a href="/portrait" class="nav-card">PORTRAITS</a>
+        <div class="tagline">
+            Studio-quality portraits.<br>
+            Delivered instantly.
         </div>
 
-        <div style="opacity: 0.8; line-height: 1.6;">
-            Based in San Jose, CA. Specializing in high-end live event 
-            coverage and studio-quality instant delivery.
+        <div class="nav-list">
+            <a href="/live" class="nav-item live-btn">
+                <span>FIND YOUR EVENT PHOTOS</span>
+                <span class="arrow">→</span>
+            </a>
+
+            <a href="/instant" class="nav-item">
+                <span>INSTANT PORTRAIT STATION</span>
+                <span class="arrow">→</span>
+            </a>
+
+            <a href="/wedding" class="nav-item">
+                <span>WEDDING PORTFOLIO</span>
+                <span class="arrow">→</span>
+            </a>
+
+            <a href="/event" class="nav-item">
+                <span>EVENT PORTFOLIO</span>
+                <span class="arrow">→</span>
+            </a>
+
+            <a href="/birthday" class="nav-item">
+                <span>BIRTHDAY PORTFOLIO</span>
+                <span class="arrow">→</span>
+            </a>
         </div>
     </div>
 
-    <footer>&copy; 2026 Levy Photos</footer>
+    <footer>&copy; 2026 Levy Photos | San Jose, CA</footer>
 
 </body>
 </html>

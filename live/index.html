@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levy Photos | Live Event Gallery</title>
+    <title>Live Event Gallery | Levy Photos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,7 +18,6 @@
 
         body {
             margin: 0;
-            padding: 0;
             background-color: var(--bg);
             color: var(--primary);
             font-family: 'Inter', sans-serif;
@@ -32,8 +31,7 @@
             width: 90%;
             max-width: 400px;
             text-align: center;
-            padding-top: 50px;
-            padding-bottom: 50px;
+            padding: 60px 20px;
         }
 
         .logo {
@@ -43,16 +41,13 @@
             margin-bottom: 25px;
         }
 
-        .logo span {
-            color: var(--accent);
-        }
+        .logo span { color: var(--accent); }
 
         .about-top {
             font-size: 18px;
             line-height: 1.6;
             opacity: 0.9;
             margin-bottom: 45px;
-            padding: 0 10px;
         }
 
         .section-box {
@@ -80,7 +75,7 @@
             letter-spacing: 1px;
         }
 
-        input[type="text"], input[type="email"], input[type="tel"], textarea {
+        input, textarea {
             width: 100%;
             padding: 18px;
             margin-bottom: 25px;
@@ -93,16 +88,7 @@
             font-family: inherit;
         }
 
-        input:focus, textarea:focus {
-            border-color: var(--accent);
-            outline: none;
-        }
-
-        textarea {
-            height: 360px; 
-            resize: none;
-            line-height: 1.5;
-        }
+        textarea { height: 360px; resize: none; }
 
         button {
             width: 100%;
@@ -114,15 +100,6 @@
             font-weight: 700;
             font-size: 18px;
             cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .tip-prompt {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 15px;
-            font-weight: 400;
-            color: var(--secondary);
         }
 
         .btn-tip {
@@ -135,56 +112,19 @@
             font-weight: 700;
             font-size: 18px;
             margin-top: 15px;
-            transition: transform 0.2s, background-color 0.2s;
             border: 1px solid #444;
         }
 
-        .btn-tip:hover {
-            background: #3a3a3c;
-        }
-
-        button:active, .btn-tip:active {
-            transform: scale(0.98);
-        }
-
-        .contact-section-subtle {
-            margin-top: 15px;
-            padding-top: 10px;
-            text-align: center;
-            width: 100%;
-        }
-
-        .contact-section-subtle a {
-            display: block;
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 40px 20px;
-            font-size: 13px;
-            opacity: 0.5;
-            text-align: center;
-            width: 100%;
-        }
-
-        .error-msg {
-            color: #ff453a;
-            font-size: 16px;
-            margin-top: 15px;
-            display: none;
-        }
+        footer { padding: 40px; font-size: 13px; opacity: 0.5; }
+        .error-msg { color: #ff453a; display: none; margin-top: 15px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="logo">LEVY<span>PHOTOS</span></div>
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="logo">LEVY<span>PHOTOS</span></div>
+        </a>
         
         <div class="about-top">
             We provide studio-quality portraits<br>
@@ -199,7 +139,7 @@
             <div id="error" class="error-msg">Code not found.</div>
             
             <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 30px;">
-                <div class="tip-prompt">Enjoying your portraits?</div>
+                <div style="margin-bottom:15px; opacity:0.7;">Enjoying your portraits?</div>
                 <a href="https://venmo.com/code?user_id=2277076526694400642&created=1774596396" class="btn-tip">TIP THE TEAM</a>
             </div>
         </div>
@@ -207,59 +147,29 @@
         <div class="section-box">
             <span class="section-title">Contact Us</span>
             <form action="https://formspree.io/f/mvzvgvro" method="POST">
-                <input type="hidden" name="_subject" value="New Levy Photos Inquiry/Feedback">
-                
+                <input type="hidden" name="_subject" value="New Inquiry">
                 <label>NAME</label>
                 <input type="text" name="name" required>
-                
                 <label>EMAIL</label>
                 <input type="email" name="email" required>
-
                 <label>PHONE NUMBER</label>
                 <input type="tel" name="phone">
-                
                 <label>MESSAGE OR FEEDBACK</label>
-                <textarea name="message" placeholder="Booking inquiry? Feedback for the team? Leave your message here..." required></textarea>
-                
+                <textarea name="message" required></textarea>
                 <button type="submit">SEND MESSAGE</button>
             </form>
         </div>
-
-        <div class="contact-section-subtle">
-            <a href="tel:4084017351">408.401.7351</a>
-            <a href="mailto:hello@levyphotos.com">hello@levyphotos.com</a>
-        </div>
     </div>
 
-    <footer>
-        &copy; 2026 Levy Photos | San Jose, CA
-    </footer>
+    <footer>&copy; 2026 Levy Photos | San Jose, CA</footer>
 
     <script>
         function checkCode() {
             const code = document.getElementById('eventCode').value.trim().toUpperCase();
-            const error = document.getElementById('error');
-
-            const events = {
-                "01": "https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/", 
-                "GALA20": "https://zno.instant.link/demo2", 
-                "TEST": "https://zno.instant.link/demo3"  
-            };
-
-            if (events[code]) {
-                error.style.display = "none";
-                window.location.href = events[code];
-            } else {
-                error.style.display = "block";
-            }
+            const events = { "01": "https://le-pham-photography.mypixhome.com/instant-gallery/levy-event-studio/" };
+            if (events[code]) { window.location.href = events[code]; } 
+            else { document.getElementById('error').style.display = "block"; }
         }
-
-        document.getElementById("eventCode").addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) {
-                checkCode();
-            }
-        });
     </script>
-
 </body>
 </html>
