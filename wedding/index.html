@@ -207,11 +207,10 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <!-- For new photos: Update data-pswp-width and data-pswp-height with actual pixel size -->
-            <a href="/images/wedding/wedding-01.jpg" class="gallery-item" data-pswp-width="2048" data-pswp-height="3072">
+            <a href="/images/wedding/wedding-01.jpg" class="gallery-item">
                 <img src="/images/thumbnails/wedding/wedding-01.jpg" alt="Wedding Photo 01">
             </a>
-            <a href="/images/wedding/wedding-02.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/wedding/wedding-02.jpg" class="gallery-item">
                 <img src="/images/thumbnails/wedding/wedding-02.jpg" alt="Wedding Photo 02">
             </a>
         </div>
@@ -254,11 +253,27 @@
     <!-- PhotoSwipe JS -->
     <script type="module">
         import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
+        
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
             pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
+
+        // DYNAMIC DIMENSION DETECTION:
+        // Instead of hardcoding, we wait for the thumbnail to load, 
+        // calculate its aspect ratio, and tell PhotoSwipe to use that.
+        lightbox.on('gettingData', (e) => {
+            const { data, index } = e;
+            const img = data.element.querySelector('img');
+            if (img && img.naturalWidth) {
+                // We use a high resolution (3000px) but keep the exact ratio of the thumbnail
+                const ratio = img.naturalHeight / img.naturalWidth;
+                data.width = 3000; 
+                data.height = 3000 * ratio;
+            }
+        });
+
         lightbox.init();
     </script>
 

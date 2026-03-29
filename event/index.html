@@ -207,32 +207,31 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <!-- For new photos: Update data-pswp-width and data-pswp-height with actual pixel size -->
-            <a href="/images/event/event-01.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/event/event-01.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-01.jpg" alt="Event Photo 01">
             </a>
-            <a href="/images/event/event-02.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/event/event-02.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-02.jpg" alt="Event Photo 02">
             </a>
-            <a href="/images/event/event-03.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/event/event-03.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-03.jpg" alt="Event Photo 03">
             </a>
-            <a href="/images/event/event-04.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/event/event-04.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-04.jpg" alt="Event Photo 04">
             </a>
-            <a href="/images/event/event-05.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/event/event-05.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-05.jpg" alt="Event Photo 05">
             </a>
-            <a href="/images/event/event-06.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/event/event-06.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-06.jpg" alt="Event Photo 06">
             </a>
-            <a href="/images/event/event-07.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/event/event-07.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-07.jpg" alt="Event Photo 07">
             </a>
-            <a href="/images/event/event-08.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/event/event-08.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-08.jpg" alt="Event Photo 08">
             </a>
-            <a href="/images/event/event-09.jpg" class="gallery-item" data-pswp-width="2048" data-pswp-height="3072">
+            <a href="/images/event/event-09.jpg" class="gallery-item">
                 <img src="/images/thumbnails/event/event-09.jpg" alt="Event Photo 09">
             </a>
         </div>
@@ -275,11 +274,27 @@
     <!-- PhotoSwipe JS -->
     <script type="module">
         import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
+        
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
             pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
+
+        // DYNAMIC DIMENSION DETECTION:
+        // Instead of hardcoding, we wait for the thumbnail to load, 
+        // calculate its aspect ratio, and tell PhotoSwipe to use that.
+        lightbox.on('gettingData', (e) => {
+            const { data, index } = e;
+            const img = data.element.querySelector('img');
+            if (img && img.naturalWidth) {
+                // We use a high resolution (3000px) but keep the exact ratio of the thumbnail
+                const ratio = img.naturalHeight / img.naturalWidth;
+                data.width = 3000; 
+                data.height = 3000 * ratio;
+            }
+        });
+
         lightbox.init();
     </script>
 

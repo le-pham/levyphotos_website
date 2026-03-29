@@ -207,20 +207,19 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <!-- For new photos: Update data-pswp-width and data-pswp-height with actual pixel size -->
-            <a href="/images/corporation/corporation-01.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/corporation/corporation-01.jpg" class="gallery-item">
                 <img src="/images/thumbnails/corporation/corporation-01.jpg" alt="Corporation Photo 01">
             </a>
-            <a href="/images/corporation/corporation-02.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/corporation/corporation-02.jpg" class="gallery-item">
                 <img src="/images/thumbnails/corporation/corporation-02.jpg" alt="Corporation Photo 02">
             </a>
-            <a href="/images/corporation/corporation-03.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/corporation/corporation-03.jpg" class="gallery-item">
                 <img src="/images/thumbnails/corporation/corporation-03.jpg" alt="Corporation Photo 03">
             </a>
-            <a href="/images/corporation/corporation-04.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/corporation/corporation-04.jpg" class="gallery-item">
                 <img src="/images/thumbnails/corporation/corporation-04.jpg" alt="Corporation Photo 04">
             </a>
-            <a href="/images/corporation/corporation-05.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/corporation/corporation-05.jpg" class="gallery-item">
                 <img src="/images/thumbnails/corporation/corporation-05.jpg" alt="Corporation Photo 05">
             </a>
         </div>
@@ -263,11 +262,27 @@
     <!-- PhotoSwipe JS -->
     <script type="module">
         import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
+        
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
             pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
+
+        // DYNAMIC DIMENSION DETECTION:
+        // Instead of hardcoding, we wait for the thumbnail to load, 
+        // calculate its aspect ratio, and tell PhotoSwipe to use that.
+        lightbox.on('gettingData', (e) => {
+            const { data, index } = e;
+            const img = data.element.querySelector('img');
+            if (img && img.naturalWidth) {
+                // We use a high resolution (3000px) but keep the exact ratio of the thumbnail
+                const ratio = img.naturalHeight / img.naturalWidth;
+                data.width = 3000; 
+                data.height = 3000 * ratio;
+            }
+        });
+
         lightbox.init();
     </script>
 
