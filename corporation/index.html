@@ -105,9 +105,8 @@
 
         .gallery-item img {
             width: 100%;
-            height: auto; /* Ensures no vertical stretching */
+            height: auto;
             display: block;
-            object-fit: contain; /* Prevents distortion */
         }
 
         /* CONTACT FORM */
@@ -207,19 +206,19 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="/images/corporation/corporation-01.jpg" class="gallery-item">
+            <a href="/images/corporation/corporation-01.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
                 <img src="/images/corporation/corporation-01.jpg" alt="Corporation Photo 01">
             </a>
-            <a href="/images/corporation/corporation-02.jpg" class="gallery-item">
+            <a href="/images/corporation/corporation-02.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
                 <img src="/images/corporation/corporation-02.jpg" alt="Corporation Photo 02">
             </a>
-            <a href="/images/corporation/corporation-03.jpg" class="gallery-item">
+            <a href="/images/corporation/corporation-03.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
                 <img src="/images/corporation/corporation-03.jpg" alt="Corporation Photo 03">
             </a>
-            <a href="/images/corporation/corporation-04.jpg" class="gallery-item">
+            <a href="/images/corporation/corporation-04.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
                 <img src="/images/corporation/corporation-04.jpg" alt="Corporation Photo 04">
             </a>
-            <a href="/images/corporation/corporation-05.jpg" class="gallery-item">
+            <a href="/images/corporation/corporation-05.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
                 <img src="/images/corporation/corporation-05.jpg" alt="Corporation Photo 05">
             </a>
         </div>
@@ -261,24 +260,11 @@
     <!-- PhotoSwipe JS -->
     <script type="module">
         import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
-        
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
             pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
-
-        // Automatically detect image dimensions
-        lightbox.addFilter('itemData', (itemData, index) => {
-            const img = new Image();
-            img.src = itemData.src;
-            img.onload = () => {
-                itemData.width = img.width;
-                itemData.height = img.height;
-            };
-            return itemData;
-        });
-
         lightbox.init();
     </script>
 
