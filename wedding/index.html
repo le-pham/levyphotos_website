@@ -257,20 +257,26 @@
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
-            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js'),
-            // Disable opening/closing transitions to prevent stretching during the animation
-            showHideAnimationType: 'none' 
+            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
 
-        // Automatically detect dimensions from the images already in the grid
-        lightbox.addFilter('itemData', (itemData, index) => {
-            const img = itemData.element.querySelector('img');
-            if (img && img.naturalWidth) {
-                itemData.width = img.naturalWidth;
-                itemData.height = img.naturalHeight;
-            }
-            return itemData;
-        });
+        // The Bulletproof Fix:
+        // Automatically inject correct dimensions into each link as soon as the image loads
+        window.onload = () => {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                const img = item.querySelector('img');
+                if (img.complete) {
+                    item.setAttribute('data-pswp-width', img.naturalWidth);
+                    item.setAttribute('data-pswp-height', img.naturalHeight);
+                } else {
+                    img.onload = () => {
+                        item.setAttribute('data-pswp-width', img.naturalWidth);
+                        item.setAttribute('data-pswp-height', img.naturalHeight);
+                    };
+                }
+            });
+        };
 
         lightbox.init();
     </script>
