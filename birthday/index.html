@@ -88,9 +88,10 @@
         }
 
         .gallery-item {
-            display: inline-block;
+            display: block;
             width: 100%;
             margin-bottom: 20px;
+            break-inside: avoid; /* Prevents splitting across columns */
             border-radius: 12px;
             overflow: hidden;
             background: var(--card-bg);
@@ -108,6 +109,7 @@
             width: 100%;
             height: auto;
             display: block;
+            object-fit: contain;
         }
 
         /* CONTACT FORM */
@@ -268,20 +270,22 @@
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
-            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
+            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js'),
+            // PhotoSwipe 5 will automatically detect dimensions if we don't provide them,
+            // but we need to disable the transition animation to prevent stretching.
+            showHideAnimationType: 'none'
         });
 
-        // DYNAMIC DIMENSION DETECTION:
-        // Instead of hardcoding, we wait for the thumbnail to load, 
-        // calculate its aspect ratio, and tell PhotoSwipe to use that.
+        // This listener will detect the size of the high-res image as it loads
+        // ensuring it never stretches beyond its natural aspect ratio.
         lightbox.on('gettingData', (e) => {
-            const { data, index } = e;
+            const { data } = e;
             const img = data.element.querySelector('img');
-            if (img && img.naturalWidth) {
-                // We use a high resolution (3000px) but keep the exact ratio of the thumbnail
-                const ratio = img.naturalHeight / img.naturalWidth;
-                data.width = 3000; 
-                data.height = 3000 * ratio;
+            if (img) {
+                // Pre-set a large enough bounding box using the thumbnail's ratio
+                // to prevent initial stretching while the big image loads.
+                data.width = img.naturalWidth * 10;
+                data.height = img.naturalHeight * 10;
             }
         });
 
