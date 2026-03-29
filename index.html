@@ -70,7 +70,7 @@
             flex-direction: column;
             gap: 15px;
             width: 100%;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .nav-item {
@@ -96,12 +96,49 @@
         .live-btn {
             background: var(--accent);
             border-color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .arrow { opacity: 0.5; font-size: 20px; }
 
-        /* CONTACT FORM */
+        /* PORTFOLIO BOX */
+        .portfolio-box {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid #333;
+            overflow: hidden;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+
+        .portfolio-box-title {
+            padding: 25px 25px 15px 25px;
+            font-size: 13px;
+            font-weight: 700;
+            opacity: 0.5;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .portfolio-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 17px;
+            border-top: 1px solid #333;
+            transition: background 0.2s;
+        }
+
+        .portfolio-link:hover {
+            background: #252525;
+            color: var(--accent);
+        }
+
+        /* SECTION BOX */
         .section-box {
             background: var(--card-bg);
             padding: 35px 30px;
@@ -116,6 +153,13 @@
             font-weight: 700;
             margin-bottom: 30px;
             display: block;
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.8;
+            text-align: left;
         }
 
         label {
@@ -199,31 +243,44 @@
                 <span>FIND YOUR EVENT PHOTOS</span>
                 <span class="arrow">→</span>
             </a>
+        </div>
 
-            <a href="/instant" class="nav-item">
+        <div class="portfolio-box">
+            <div class="portfolio-box-title">Explore Portfolios</div>
+            
+            <a href="/instant" class="portfolio-link">
                 <span>INSTANT PORTRAIT STATION</span>
                 <span class="arrow">→</span>
             </a>
 
-            <a href="/wedding" class="nav-item">
+            <a href="/wedding" class="portfolio-link">
                 <span>WEDDINGS</span>
                 <span class="arrow">→</span>
             </a>
 
-            <a href="/birthday" class="nav-item">
+            <a href="/birthday" class="portfolio-link">
                 <span>BIRTHDAYS</span>
                 <span class="arrow">→</span>
             </a>
 
-            <a href="/event" class="nav-item">
+            <a href="/event" class="portfolio-link">
                 <span>EVENTS</span>
                 <span class="arrow">→</span>
             </a>
 
-            <a href="/corporation" class="nav-item">
+            <a href="/corporation" class="portfolio-link">
                 <span>CORPORATE</span>
                 <span class="arrow">→</span>
             </a>
+        </div>
+
+        <div class="section-box">
+            <span class="section-title">About Us</span>
+            <div class="about-text">
+                Levy Photos is a premier event photography studio based in San Jose, CA. We specialize in high-end weddings, corporate galas, and private celebrations. 
+                <br><br>
+                Our signature <b>Instant Portrait Station</b> brings a professional studio experience to your venue, delivering gallery-quality portraits directly to your guests' devices in real-time. We combine artistic vision with cutting-edge technology to ensure your most important moments are captured and shared instantly.
+            </div>
         </div>
 
         <div class="section-box">
