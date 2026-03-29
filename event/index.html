@@ -12,6 +12,10 @@
     <meta property="og:image" content="https://levyphotos.com/og-image.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- PhotoSwipe CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe.min.css">
+
     <style>
         :root {
             --primary: #ffffff;
@@ -34,7 +38,7 @@
 
         .container {
             width: 90%;
-            max-width: 900px;
+            max-width: 1000px;
             text-align: center;
             padding: 60px 20px;
         }
@@ -66,42 +70,37 @@
         h1 { font-size: 36px; margin-bottom: 15px; }
         .description { opacity: 0.7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: auto; }
 
-        /* SHOWCASE GRID */
-        .showcase-grid {
+        /* GALLERY GRID */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
             margin-top: 40px;
             margin-bottom: 80px;
         }
 
-        .showcase-card {
-            background: var(--card-bg);
-            border-radius: 20px;
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
             overflow: hidden;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.3s ease, border-color 0.3s;
+            border-radius: 12px;
+            background: var(--card-bg);
+            cursor: pointer;
             border: 1px solid #333;
-            text-align: left;
+            transition: transform 0.3s ease, border-color 0.3s;
         }
 
-        .showcase-card:hover {
-            transform: translateY(-10px);
+        .gallery-item:hover {
+            transform: scale(1.02);
             border-color: var(--accent);
         }
 
-        .card-image {
+        .gallery-item img {
             width: 100%;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            background-color: #222;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
-
-        .card-info { padding: 25px; }
-        .card-title { font-weight: 700; font-size: 20px; display: block; margin-bottom: 5px; }
-        .card-tag { font-size: 14px; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px; }
 
         /* CONTACT FORM */
         .section-box {
@@ -198,77 +197,34 @@
             </div>
         </div>
 
-        <div class="showcase-grid">
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-01.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Corporate</span>
-                    <span class="card-title">Event Highlights 01</span>
-                </div>
+        <!-- GALLERY GRID -->
+        <div class="gallery-grid" id="gallery">
+            <a href="../images/event/event-01.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-01.jpg" alt="Event Photo 01">
             </a>
-
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-02.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Gala</span>
-                    <span class="card-title">Event Highlights 02</span>
-                </div>
+            <a href="../images/event/event-02.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-02.jpg" alt="Event Photo 02">
             </a>
-
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-03.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Reception</span>
-                    <span class="card-title">Event Highlights 03</span>
-                </div>
+            <a href="../images/event/event-03.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-03.jpg" alt="Event Photo 03">
             </a>
-
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-04.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Corporate</span>
-                    <span class="card-title">Event Highlights 04</span>
-                </div>
+            <a href="../images/event/event-04.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-04.jpg" alt="Event Photo 04">
             </a>
-
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-05.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Fundraiser</span>
-                    <span class="card-title">Event Highlights 05</span>
-                </div>
+            <a href="../images/event/event-05.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-05.jpg" alt="Event Photo 05">
             </a>
-
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-06.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Celebration</span>
-                    <span class="card-title">Event Highlights 06</span>
-                </div>
+            <a href="../images/event/event-06.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-06.jpg" alt="Event Photo 06">
             </a>
-
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-07.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Gala</span>
-                    <span class="card-title">Event Highlights 07</span>
-                </div>
+            <a href="../images/event/event-07.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-07.jpg" alt="Event Photo 07">
             </a>
-
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-08.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Corporate</span>
-                    <span class="card-title">Event Highlights 08</span>
-                </div>
+            <a href="../images/event/event-08.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-08.jpg" alt="Event Photo 08">
             </a>
-
-            <a href="#" class="showcase-card">
-                <div class="card-image" style="background-image: url('/images/event/event-09.jpg');"></div>
-                <div class="card-info">
-                    <span class="card-tag">Reception</span>
-                    <span class="card-title">Event Highlights 09</span>
-                </div>
+            <a href="../images/event/event-09.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="../images/event/event-09.jpg" alt="Event Photo 09">
             </a>
         </div>
 
@@ -305,6 +261,17 @@
     </div>
 
     <footer>&copy; 2026 Levy Photos | San Jose, CA</footer>
+
+    <!-- PhotoSwipe JS -->
+    <script type="module">
+        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe-lightbox.esm.min.js';
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#gallery',
+            children: 'a',
+            pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe.esm.min.js')
+        });
+        lightbox.init();
+    </script>
 
 </body>
 </html>
