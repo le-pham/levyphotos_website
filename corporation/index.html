@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Portfolio | Levy Photos</title>
-    <meta name="description" content="Elegant wedding photography portfolio. Capturing timeless moments and emotions with a premium cinematic style.">
+    <title>Corporation Portfolio | Levy Photos</title>
+    <meta name="description" content="Professional corporate photography. Headshots, office culture, and company events captured with premium quality in San Jose.">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Wedding Portfolio | Levy Photos">
-    <meta property="og:description" content="Elegant wedding photography. Capturing timeless moments and emotions with a premium cinematic style.">
+    <meta property="og:title" content="Corporation Portfolio | Levy Photos">
+    <meta property="og:description" content="Professional headshots and corporate event coverage. Elevate your brand with studio-quality imagery.">
     <meta property="og:image" content="https://levyphotos.com/og-image.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -29,16 +29,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
         .container {
             width: 90%;
-            max-width: 1100px;
+            max-width: 900px;
             text-align: center;
             padding: 60px 20px;
         }
 
-        .logo { font-size: 32px; font-weight: 700; margin-bottom: 25px; }
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+        }
+
         .logo span { color: var(--accent); }
 
         .back-link {
@@ -55,28 +62,46 @@
 
         .back-link:hover { opacity: 1; color: var(--accent); }
 
-        h1 { font-size: 32px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        .header { margin-bottom: 60px; }
+        h1 { font-size: 36px; margin-bottom: 15px; }
+        .description { opacity: 0.7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: auto; }
 
-        /* PHOTO MASONRY GRID */
-        .portfolio-grid {
-            column-count: 2;
-            column-gap: 20px;
+        /* SHOWCASE GRID */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
             margin-bottom: 80px;
         }
 
-        @media (max-width: 768px) {
-            .portfolio-grid { column-count: 1; }
+        .showcase-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, border-color 0.3s;
+            border: 1px solid #333;
+            text-align: left;
         }
 
-        .portfolio-grid img {
+        .showcase-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .card-image {
             width: 100%;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            display: block;
-            transition: opacity 0.3s;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-color: #222;
         }
 
-        .portfolio-grid img:hover { opacity: 0.8; }
+        .card-info { padding: 25px; }
+        .card-title { font-weight: 700; font-size: 20px; display: block; margin-bottom: 5px; }
+        .card-tag { font-size: 14px; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px; }
 
         /* CONTACT FORM */
         .section-box {
@@ -166,13 +191,53 @@
             <div class="logo">LEVY<span>PHOTOS</span></div>
         </a>
 
-        <h1>Wedding Portfolio</h1> 
-        
-        <div class="portfolio-grid">
-            <img src="/images/wedding/wedding-01.jpg" alt="Wedding Portrait 1">
-            <img src="/images/wedding/wedding-02.jpg" alt="Wedding Portrait 2">
-            <img src="https://via.placeholder.com/600x900/222/fff?text=Waiting+for+Photo+3" alt="Portfolio Image">
-            <img src="https://via.placeholder.com/600x600/222/fff?text=Waiting+for+Photo+4" alt="Portfolio Image">
+        <div class="header">
+            <h1>Corporation Portfolio</h1>
+            <div class="description">
+                Professional headshots, brand imagery, and corporate events. We help businesses tell their story through premium photography.
+            </div>
+        </div>
+
+        <div class="showcase-grid">
+            <a href="#" class="showcase-card">
+                <div class="card-image" style="background-image: url('/images/corporation/corporation-01.jpg');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Branding</span>
+                    <span class="card-title">Executive Portraits 01</span>
+                </div>
+            </a>
+
+            <a href="#" class="showcase-card">
+                <div class="card-image" style="background-image: url('/images/corporation/corporation-02.jpg');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Lifestyle</span>
+                    <span class="card-title">Modern Workspace 01</span>
+                </div>
+            </a>
+
+            <a href="#" class="showcase-card">
+                <div class="card-image" style="background-image: url('/images/corporation/corporation-03.jpg');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Branding</span>
+                    <span class="card-title">Executive Portraits 02</span>
+                </div>
+            </a>
+
+            <a href="#" class="showcase-card">
+                <div class="card-image" style="background-image: url('/images/corporation/corporation-04.jpg');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Lifestyle</span>
+                    <span class="card-title">Modern Workspace 02</span>
+                </div>
+            </a>
+
+            <a href="#" class="showcase-card">
+                <div class="card-image" style="background-image: url('/images/corporation/corporation-05.jpg');"></div>
+                <div class="card-info">
+                    <span class="card-tag">Branding</span>
+                    <span class="card-title">Executive Portraits 03</span>
+                </div>
+            </a>
         </div>
 
         <div class="section-box contact-form-section">
