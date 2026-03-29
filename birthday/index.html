@@ -38,7 +38,7 @@
 
         .container {
             width: 90%;
-            max-width: 1000px;
+            max-width: 1100px;
             text-align: center;
             padding: 60px 20px;
         }
@@ -70,7 +70,7 @@
         h1 { font-size: 36px; margin-bottom: 15px; }
         .description { opacity: 0.7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: auto; }
 
-        /* GALLERY GRID (Masonry Layout - No Cropping) */
+        /* GALLERY GRID (Masonry) */
         .gallery-grid {
             column-count: 3;
             column-gap: 20px;
@@ -105,8 +105,9 @@
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: auto; /* Ensures no vertical stretching */
             display: block;
+            object-fit: contain; /* Prevents distortion */
         }
 
         /* CONTACT FORM */
@@ -206,22 +207,22 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="/images/birthday/birthday-01.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+            <a href="/images/birthday/birthday-01.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-01.jpg" alt="Birthday Photo 01">
             </a>
-            <a href="/images/birthday/birthday-02.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+            <a href="/images/birthday/birthday-02.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-02.jpg" alt="Birthday Photo 02">
             </a>
-            <a href="/images/birthday/birthday-03.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+            <a href="/images/birthday/birthday-03.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-03.jpg" alt="Birthday Photo 03">
             </a>
-            <a href="/images/birthday/birthday-04.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+            <a href="/images/birthday/birthday-04.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-04.jpg" alt="Birthday Photo 04">
             </a>
-            <a href="/images/birthday/birthday-05.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+            <a href="/images/birthday/birthday-05.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-05.jpg" alt="Birthday Photo 05">
             </a>
-            <a href="/images/birthday/birthday-06.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+            <a href="/images/birthday/birthday-06.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-06.jpg" alt="Birthday Photo 06">
             </a>
         </div>
@@ -263,11 +264,24 @@
     <!-- PhotoSwipe JS -->
     <script type="module">
         import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
+        
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
             pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
+
+        // Automatically detect image dimensions
+        lightbox.addFilter('itemData', (itemData, index) => {
+            const img = new Image();
+            img.src = itemData.src;
+            img.onload = () => {
+                itemData.width = img.width;
+                itemData.height = img.height;
+            };
+            return itemData;
+        });
+
         lightbox.init();
     </script>
 
