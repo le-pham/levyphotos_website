@@ -206,22 +206,22 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="/images/birthday/birthday-01.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/birthday/birthday-01.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-01.jpg" alt="Birthday Photo 01">
             </a>
-            <a href="/images/birthday/birthday-02.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/birthday/birthday-02.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-02.jpg" alt="Birthday Photo 02">
             </a>
-            <a href="/images/birthday/birthday-03.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/birthday/birthday-03.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-03.jpg" alt="Birthday Photo 03">
             </a>
-            <a href="/images/birthday/birthday-04.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/birthday/birthday-04.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-04.jpg" alt="Birthday Photo 04">
             </a>
-            <a href="/images/birthday/birthday-05.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/birthday/birthday-05.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-05.jpg" alt="Birthday Photo 05">
             </a>
-            <a href="/images/birthday/birthday-06.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/birthday/birthday-06.jpg" class="gallery-item">
                 <img src="/images/birthday/birthday-06.jpg" alt="Birthday Photo 06">
             </a>
         </div>
@@ -263,11 +263,25 @@
     <!-- PhotoSwipe JS -->
     <script type="module">
         import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
+        
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
-            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
+            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js'),
+            // Disable opening/closing transitions to prevent stretching during the animation
+            showHideAnimationType: 'none' 
         });
+
+        // Automatically detect dimensions from the images already in the grid
+        lightbox.addFilter('itemData', (itemData, index) => {
+            const img = itemData.element.querySelector('img');
+            if (img && img.naturalWidth) {
+                itemData.width = img.naturalWidth;
+                itemData.height = img.naturalHeight;
+            }
+            return itemData;
+        });
+
         lightbox.init();
     </script>
 

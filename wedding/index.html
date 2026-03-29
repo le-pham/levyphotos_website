@@ -87,7 +87,7 @@
         }
 
         .gallery-item {
-            display: inline-block; /* Essential for masonry columns */
+            display: inline-block;
             width: 100%;
             margin-bottom: 20px;
             border-radius: 12px;
@@ -206,10 +206,10 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="/images/wedding/wedding-01.jpg" class="gallery-item" data-pswp-width="2048" data-pswp-height="3072">
+            <a href="/images/wedding/wedding-01.jpg" class="gallery-item">
                 <img src="/images/wedding/wedding-01.jpg" alt="Wedding Photo 01">
             </a>
-            <a href="/images/wedding/wedding-02.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
+            <a href="/images/wedding/wedding-02.jpg" class="gallery-item">
                 <img src="/images/wedding/wedding-02.jpg" alt="Wedding Photo 02">
             </a>
         </div>
@@ -255,8 +255,21 @@
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
-            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
+            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js'),
+            // Disable opening/closing transitions to prevent stretching during the animation
+            showHideAnimationType: 'none' 
         });
+
+        // Automatically detect dimensions from the images already in the grid
+        lightbox.addFilter('itemData', (itemData, index) => {
+            const img = itemData.element.querySelector('img');
+            if (img && img.naturalWidth) {
+                itemData.width = img.naturalWidth;
+                itemData.height = img.naturalHeight;
+            }
+            return itemData;
+        });
+
         lightbox.init();
     </script>
 
