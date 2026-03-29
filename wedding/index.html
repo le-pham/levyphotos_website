@@ -260,23 +260,19 @@
             pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
 
-        // The Bulletproof Fix:
-        // Automatically inject correct dimensions into each link as soon as the image loads
-        window.onload = () => {
-            const items = document.querySelectorAll('.gallery-item');
-            items.forEach(item => {
-                const img = item.querySelector('img');
-                if (img.complete) {
-                    item.setAttribute('data-pswp-width', img.naturalWidth);
-                    item.setAttribute('data-pswp-height', img.naturalHeight);
-                } else {
-                    img.onload = () => {
-                        item.setAttribute('data-pswp-width', img.naturalWidth);
-                        item.setAttribute('data-pswp-height', img.naturalHeight);
-                    };
-                }
-            });
-        };
+        // FIXED: Load dimensions of the LARGE image, not the thumbnail
+        lightbox.on('gettingData', (e) => {
+            const { data } = e;
+            if (data && !data.width) {
+                const img = new Image();
+                img.src = data.src; // This is the href of the <a> link (Full Size)
+                img.onload = () => {
+                    data.width = img.naturalWidth;
+                    data.height = img.naturalHeight;
+                    lightbox.pswp.refreshSlideContent(e.index);
+                };
+            }
+        });
 
         lightbox.init();
     </script>
