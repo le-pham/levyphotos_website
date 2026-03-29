@@ -13,8 +13,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- PhotoSwipe CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.css">
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
     <style>
         :root {
@@ -207,33 +207,51 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="/images/event/event-01.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/event/event-01.jpg" alt="Event Photo 01">
-            </a>
-            <a href="/images/event/event-02.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/event/event-02.jpg" alt="Event Photo 02">
-            </a>
-            <a href="/images/event/event-03.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/event/event-03.jpg" alt="Event Photo 03">
-            </a>
-            <a href="/images/event/event-04.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/event/event-04.jpg" alt="Event Photo 04">
-            </a>
-            <a href="/images/event/event-05.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/event/event-05.jpg" alt="Event Photo 05">
-            </a>
-            <a href="/images/event/event-06.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/event/event-06.jpg" alt="Event Photo 06">
-            </a>
-            <a href="/images/event/event-07.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/event/event-07.jpg" alt="Event Photo 07">
-            </a>
-            <a href="/images/event/event-08.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/event/event-08.jpg" alt="Event Photo 08">
-            </a>
-            <a href="/images/event/event-09.jpg" class="gallery-item" data-pswp-width="2048" data-pswp-height="3072">
-                <img src="/images/thumbnails/event/event-09.jpg" alt="Event Photo 09">
-            </a>
+            <div class="gallery-item">
+                <a href="/images/event/event-01.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-01.jpg" alt="Event Photo 01">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/event/event-02.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-02.jpg" alt="Event Photo 02">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/event/event-03.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-03.jpg" alt="Event Photo 03">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/event/event-04.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-04.jpg" alt="Event Photo 04">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/event/event-05.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-05.jpg" alt="Event Photo 05">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/event/event-06.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-06.jpg" alt="Event Photo 06">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/event/event-07.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-07.jpg" alt="Event Photo 07">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/event/event-08.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-08.jpg" alt="Event Photo 08">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/event/event-09.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/event/event-09.jpg" alt="Event Photo 09">
+                </a>
+            </div>
         </div>
 
         <a href="/" class="back-link">← BACK TO HOME</a>
@@ -271,33 +289,20 @@
 
     <footer>&copy; 2026 Levy Photos | San Jose, CA</footer>
 
-    <!-- PhotoSwipe JS -->
-    <script type="module">
-        import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
-        
-        const lightbox = new PhotoSwipeLightbox({
-            gallery: '#gallery',
-            children: 'a',
-            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js'),
-            // PhotoSwipe 5 will use the data-pswp-width/height we provided
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            infinite: true,
+            dragToClose: true,
+            Toolbar: {
+                display: {
+                    left: ["infobar"],
+                    middle: [],
+                    right: ["zoom", "slideshow", "close"],
+                },
+            },
         });
-
-        // The Backup Script: If you ever change photos, this script will 
-        // automatically detect the new size so nothing ever stretches again.
-        lightbox.on('gettingData', (e) => {
-            const { data } = e;
-            const img = new Image();
-            img.src = data.src;
-            img.onload = () => {
-                if (data.width !== img.naturalWidth) {
-                    data.width = img.naturalWidth;
-                    data.height = img.naturalHeight;
-                    lightbox.pswp.refreshSlideContent(e.index);
-                }
-            };
-        });
-
-        lightbox.init();
     </script>
 
 </body>

@@ -13,8 +13,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- PhotoSwipe CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.css">
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
     <style>
         :root {
@@ -207,12 +207,16 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="/images/wedding/wedding-01.jpg" class="gallery-item" data-pswp-width="2048" data-pswp-height="3072">
-                <img src="/images/thumbnails/wedding/wedding-01.jpg" alt="Wedding Photo 01">
-            </a>
-            <a href="/images/wedding/wedding-02.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
-                <img src="/images/thumbnails/wedding/wedding-02.jpg" alt="Wedding Photo 02">
-            </a>
+            <div class="gallery-item">
+                <a href="/images/wedding/wedding-01.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/wedding/wedding-01.jpg" alt="Wedding Photo 01">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="/images/wedding/wedding-02.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/wedding/wedding-02.jpg" alt="Wedding Photo 02">
+                </a>
+            </div>
         </div>
 
         <a href="/" class="back-link">← BACK TO HOME</a>
@@ -250,33 +254,20 @@
 
     <footer>&copy; 2026 Levy Photos | San Jose, CA</footer>
 
-    <!-- PhotoSwipe JS -->
-    <script type="module">
-        import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
-        
-        const lightbox = new PhotoSwipeLightbox({
-            gallery: '#gallery',
-            children: 'a',
-            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js'),
-            // PhotoSwipe 5 will use the data-pswp-width/height we provided
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            infinite: true,
+            dragToClose: true,
+            Toolbar: {
+                display: {
+                    left: ["infobar"],
+                    middle: [],
+                    right: ["zoom", "slideshow", "close"],
+                },
+            },
         });
-
-        // The Backup Script: If you ever change photos, this script will 
-        // automatically detect the new size so nothing ever stretches again.
-        lightbox.on('gettingData', (e) => {
-            const { data } = e;
-            const img = new Image();
-            img.src = data.src;
-            img.onload = () => {
-                if (data.width !== img.naturalWidth) {
-                    data.width = img.naturalWidth;
-                    data.height = img.naturalHeight;
-                    lightbox.pswp.refreshSlideContent(e.index);
-                }
-            };
-        });
-
-        lightbox.init();
     </script>
 
 </body>
