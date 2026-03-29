@@ -70,20 +70,28 @@
         h1 { font-size: 36px; margin-bottom: 15px; }
         .description { opacity: 0.7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: auto; }
 
-        /* GALLERY GRID */
+        /* GALLERY GRID (Masonry Layout - No Cropping) */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            column-count: 3;
+            column-gap: 20px;
             margin-top: 40px;
             margin-bottom: 80px;
         }
 
+        @media (max-width: 900px) {
+            .gallery-grid { column-count: 2; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid { column-count: 1; }
+        }
+
         .gallery-item {
-            position: relative;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
+            display: block;
+            margin-bottom: 20px;
+            break-inside: avoid;
             border-radius: 12px;
+            overflow: hidden;
             background: var(--card-bg);
             cursor: pointer;
             border: 1px solid #333;
@@ -97,8 +105,7 @@
 
         .gallery-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
         }
 
