@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- PhotoSwipe CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.css">
 
     <style>
         :root {
@@ -199,17 +199,11 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="../images/wedding/wedding-01.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="../images/wedding/wedding-01.jpg" alt="Wedding Photo 01">
+            <a href="/images/wedding/wedding-01.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="/images/wedding/wedding-01.jpg" alt="Wedding Photo 01">
             </a>
-            <a href="../images/wedding/wedding-02.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="../images/wedding/wedding-02.jpg" alt="Wedding Photo 02">
-            </a>
-            <a href="https://via.placeholder.com/1200x800/222/fff?text=Waiting+for+Photo+3" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="https://via.placeholder.com/600x600/222/fff?text=Waiting+for+Photo+3" alt="Portfolio Image">
-            </a>
-            <a href="https://via.placeholder.com/1200x800/222/fff?text=Waiting+for+Photo+4" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="https://via.placeholder.com/600x600/222/fff?text=Waiting+for+Photo+4" alt="Portfolio Image">
+            <a href="/images/wedding/wedding-02.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="/images/wedding/wedding-02.jpg" alt="Wedding Photo 02">
             </a>
         </div>
 
@@ -249,11 +243,11 @@
 
     <!-- PhotoSwipe JS -->
     <script type="module">
-        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe-lightbox.esm.min.js';
+        import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
-            pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe.esm.min.js')
+            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
         lightbox.init();
     </script>

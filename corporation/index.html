@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- PhotoSwipe CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.css">
 
     <style>
         :root {
@@ -199,20 +199,20 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="../images/corporation/corporation-01.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="../images/corporation/corporation-01.jpg" alt="Corporation Photo 01">
+            <a href="/images/corporation/corporation-01.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="/images/corporation/corporation-01.jpg" alt="Corporation Photo 01">
             </a>
-            <a href="../images/corporation/corporation-02.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="../images/corporation/corporation-02.jpg" alt="Corporation Photo 02">
+            <a href="/images/corporation/corporation-02.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="/images/corporation/corporation-02.jpg" alt="Corporation Photo 02">
             </a>
-            <a href="../images/corporation/corporation-03.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="../images/corporation/corporation-03.jpg" alt="Corporation Photo 03">
+            <a href="/images/corporation/corporation-03.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="/images/corporation/corporation-03.jpg" alt="Corporation Photo 03">
             </a>
-            <a href="../images/corporation/corporation-04.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="../images/corporation/corporation-04.jpg" alt="Corporation Photo 04">
+            <a href="/images/corporation/corporation-04.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="/images/corporation/corporation-04.jpg" alt="Corporation Photo 04">
             </a>
-            <a href="../images/corporation/corporation-05.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
-                <img src="../images/corporation/corporation-05.jpg" alt="Corporation Photo 05">
+            <a href="/images/corporation/corporation-05.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="800">
+                <img src="/images/corporation/corporation-05.jpg" alt="Corporation Photo 05">
             </a>
         </div>
 
@@ -252,11 +252,11 @@
 
     <!-- PhotoSwipe JS -->
     <script type="module">
-        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe-lightbox.esm.min.js';
+        import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
-            pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.3/photoswipe.esm.min.js')
+            pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
         lightbox.init();
     </script>
