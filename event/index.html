@@ -87,9 +87,9 @@
         }
 
         .gallery-item {
-            display: block;
+            display: inline-block; /* Essential for masonry columns */
+            width: 100%;
             margin-bottom: 20px;
-            break-inside: avoid;
             border-radius: 12px;
             overflow: hidden;
             background: var(--card-bg);
@@ -206,31 +206,31 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="/images/event/event-01.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-01.jpg" class="gallery-item">
                 <img src="/images/event/event-01.jpg" alt="Event Photo 01">
             </a>
-            <a href="/images/event/event-02.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-02.jpg" class="gallery-item">
                 <img src="/images/event/event-02.jpg" alt="Event Photo 02">
             </a>
-            <a href="/images/event/event-03.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-03.jpg" class="gallery-item">
                 <img src="/images/event/event-03.jpg" alt="Event Photo 03">
             </a>
-            <a href="/images/event/event-04.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-04.jpg" class="gallery-item">
                 <img src="/images/event/event-04.jpg" alt="Event Photo 04">
             </a>
-            <a href="/images/event/event-05.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-05.jpg" class="gallery-item">
                 <img src="/images/event/event-05.jpg" alt="Event Photo 05">
             </a>
-            <a href="/images/event/event-06.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-06.jpg" class="gallery-item">
                 <img src="/images/event/event-06.jpg" alt="Event Photo 06">
             </a>
-            <a href="/images/event/event-07.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-07.jpg" class="gallery-item">
                 <img src="/images/event/event-07.jpg" alt="Event Photo 07">
             </a>
-            <a href="/images/event/event-08.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-08.jpg" class="gallery-item">
                 <img src="/images/event/event-08.jpg" alt="Event Photo 08">
             </a>
-            <a href="/images/event/event-09.jpg" class="gallery-item" data-pswp-width="1200" data-pswp-height="1800">
+            <a href="/images/event/event-09.jpg" class="gallery-item">
                 <img src="/images/event/event-09.jpg" alt="Event Photo 09">
             </a>
         </div>
@@ -272,11 +272,27 @@
     <!-- PhotoSwipe JS -->
     <script type="module">
         import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
+        
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
             pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
+
+        // Smart Dimension Detection: Finds actual image size when clicked
+        lightbox.on('gettingData', (e) => {
+            const { data } = e;
+            if (data && !data.width) {
+                const img = new Image();
+                img.src = data.src;
+                img.onload = () => {
+                    data.width = img.naturalWidth;
+                    data.height = img.naturalHeight;
+                    lightbox.pswp.refreshSlideContent(e.index);
+                };
+            }
+        });
+
         lightbox.init();
     </script>
 
