@@ -38,7 +38,7 @@
 
         .container {
             width: 90%;
-            max-width: 1000px;
+            max-width: 1100px;
             text-align: center;
             padding: 60px 20px;
         }
@@ -207,10 +207,11 @@
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="gallery">
-            <a href="/images/wedding/wedding-01.jpg" class="gallery-item">
+            <!-- For new photos: Update data-pswp-width and data-pswp-height with actual pixel size -->
+            <a href="/images/wedding/wedding-01.jpg" class="gallery-item" data-pswp-width="2048" data-pswp-height="3072">
                 <img src="/images/thumbnails/wedding/wedding-01.jpg" alt="Wedding Photo 01">
             </a>
-            <a href="/images/wedding/wedding-02.jpg" class="gallery-item">
+            <a href="/images/wedding/wedding-02.jpg" class="gallery-item" data-pswp-width="3072" data-pswp-height="2048">
                 <img src="/images/thumbnails/wedding/wedding-02.jpg" alt="Wedding Photo 02">
             </a>
         </div>
@@ -253,27 +254,11 @@
     <!-- PhotoSwipe JS -->
     <script type="module">
         import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.js';
-        
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
             pswpModule: () => import('https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.esm.js')
         });
-
-        // FIXED: Load dimensions of the LARGE image, not the thumbnail
-        lightbox.on('gettingData', (e) => {
-            const { data } = e;
-            if (data && !data.width) {
-                const img = new Image();
-                img.src = data.src; // This is the href of the <a> link (Full Size)
-                img.onload = () => {
-                    data.width = img.naturalWidth;
-                    data.height = img.naturalHeight;
-                    lightbox.pswp.refreshSlideContent(e.index);
-                };
-            }
-        });
-
         lightbox.init();
     </script>
 
