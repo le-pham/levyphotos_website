@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Works | Levy Photography</title>
+    <meta name="description" content="Explore our diverse photography portfolio. Capturing unique moments and various projects with studio-quality portraits in San Jose.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Other Works | Levy Photography">
+    <meta property="og:description" content="A collection of various photography projects and unique moments captured by Levy Photography.">
+    <meta property="og:image" content="https://levyphotos.com/og-image.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Fancybox CSS (Professional & Reliable) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+    <style>
+        :root {
+            --primary: #ffffff;
+            --accent: #007AFF; 
+            --bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --input-bg: #000000;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 12px;
+            margin-top: 0;
+            margin-bottom: 80px;
+            transition: opacity 0.2s;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        .back-link:hover { opacity: 1; color: var(--accent); }
+
+        .header { margin-bottom: 60px; }
+        h1 { font-size: 36px; margin-bottom: 15px; }
+        .description { opacity: 0.7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: auto; }
+
+        /* GALLERY GRID (Masonry) */
+        .gallery-grid {
+            column-count: 3;
+            column-gap: 20px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid { column-count: 2; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid { column-count: 1; }
+        }
+
+        .gallery-item {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            break-inside: avoid;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--card-bg);
+            cursor: pointer;
+            border: 1px solid #333;
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* CONTACT FORM */
+        .section-box {
+            background: var(--card-bg);
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .contact-form-section {
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-size: 13px;
+            margin-bottom: 10px;
+            opacity: 0.7;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            border: 1px solid #444;
+            background: var(--input-bg);
+            color: white;
+            font-size: 18px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        textarea { height: 360px; resize: none; }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            border-radius: 12px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        footer { padding: 60px; font-size: 13px; opacity: 0.6; }
+
+        .contact-details {
+            margin-top: 60px;
+            margin-bottom: 30px;
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .contact-details a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-details a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="logo">LEVY<span>PHOTOGRAPHY</span></div>
+        </a>
+
+        <div class="header">
+            <h1>Other Works</h1>
+            <div class="description">
+                A collection of various photography projects and unique moments captured by Levy Photography.
+            </div>
+        </div>
+
+        <!-- GALLERY GRID -->
+        <div class="gallery-grid" id="gallery">
+            <!-- Add photos here like:
+            <div class="gallery-item">
+                <a href="/images/other/other-01.jpg" data-fancybox="gallery">
+                    <img src="/images/thumbnails/other/other-01.jpg" alt="Other Work 01">
+                </a>
+            </div>
+            -->
+        </div>
+
+        <a href="/" class="back-link">← BACK TO HOME</a>
+
+        <div class="section-box contact-form-section">
+            <span class="section-title">Contact Us</span>
+            <form action="https://formspree.io/f/mvzvgvro" method="POST">
+                <input type="hidden" name="_subject" value="New Inquiry">
+                <label>NAME</label>
+                <input type="text" name="name" required>
+                <label>EMAIL</label>
+                <input type="email" name="email" required>
+                <label>PHONE NUMBER</label>
+                <input type="tel" name="phone">
+                <label>MESSAGE OR FEEDBACK</label>
+                <textarea name="message" required></textarea>
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="contact-details">
+        <div>
+            <a href="tel:4088002728">408.800.2728</a> &nbsp;&bull;&nbsp;
+            <a href="mailto:hello@levyphotos.com">hello@levyphotos.com</a>
+            </div>
+        <div style="margin-top: 15px;">
+            <a href="https://www.instagram.com/levyphotovideo/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                @LEVYPHOTOVIDEO
+            </a>
+        </div>
+    </div>
+
+    <footer>&copy; 2026 Levy Photography | San Jose, CA</footer>
+
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            infinite: true,
+            dragToClose: true,
+            Toolbar: {
+                display: {
+                    left: ["infobar"],
+                    middle: [],
+                    right: ["zoom", "slideshow", "close"],
+                },
+            },
+        });
+    </script>
+
+</body>
+</html>
