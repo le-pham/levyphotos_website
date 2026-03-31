@@ -139,39 +139,6 @@
             transform: scale(1.02);
         }
 
-        /* NAVIGATION BUTTONS */
-        .nav-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 600px;
-            margin: 40px auto;
-            text-align: left;
-        }
-
-        .nav-item {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 18px;
-            transition: all 0.2s ease;
-            border: 1px solid #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-item:hover {
-            border-color: var(--accent);
-            transform: scale(1.02);
-        }
-
-        .arrow { opacity: 0.5; font-size: 20px; }
-
         /* CONTACT FORM */
         .section-box {
             background: var(--card-bg);
