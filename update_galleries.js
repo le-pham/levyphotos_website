@@ -5,7 +5,7 @@ let sharp;
 try {
   sharp = require('sharp');
 } catch (e) {
-  console.warn('Sharp not found. Run "npm install" first.');
+  // Silent fail locally if not installed, but it will be installed in GitHub Actions
 }
 
 const folders = ['birthday', 'corporation', 'event', 'instant', 'wedding'];
@@ -25,17 +25,12 @@ async function updateGalleries() {
         .filter(file => /\.(jpg|jpeg|png)$/i.test(file))
         .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
 
-      // Clean up orphaned thumbnails
+      // Remove orphaned thumbnails
       if (fs.existsSync(thumbnailsPath)) {
         const thumbFiles = fs.readdirSync(thumbnailsPath);
         for (const thumbFile of thumbFiles) {
           if (!files.includes(thumbFile)) {
-            console.log(`Cleaning up old thumbnail: ${folder}/${thumbFile}`);
-            try {
-                fs.unlinkSync(path.join(thumbnailsPath, thumbFile));
-            } catch (e) {
-                console.error(`Error deleting ${thumbFile}:`, e);
-            }
+            try { fs.unlinkSync(path.join(thumbnailsPath, thumbFile)); } catch (e) {}
           }
         }
       }
@@ -46,14 +41,11 @@ async function updateGalleries() {
         const thumbPath = path.join(thumbnailsPath, file);
 
         if (!fs.existsSync(thumbPath) && sharp) {
-          console.log(`Creating new thumbnail for ${folder}/${file}...`);
+          console.log(`Generating thumbnail for ${folder}/${file}...`);
           try {
-            await sharp(fullImagePath)
-              .resize(800, null, { withoutEnlargement: true })
-              .jpeg({ quality: 80 })
-              .toFile(thumbPath);
+            await sharp(fullImagePath).resize(800, null, {维护: true, withoutEnlargement: true }).jpeg({ quality: 80 }).toFile(thumbPath);
           } catch (err) {
-            console.error(`Error generating ${file}:`, err);
+            console.error(`Error generating thumbnail for ${file}:`, err);
           }
         }
 
@@ -71,10 +63,8 @@ async function updateGalleries() {
       if (indexContent.includes(startTag) && indexContent.includes(endTag)) {
           const startIdx = indexContent.indexOf(startTag) + startTag.length;
           const endIdx = indexContent.indexOf(endTag);
-          
           const newGrid = `\n        <div class="gallery-grid" id="gallery">\n${galleryHtml}        </div>\n        `;
           indexContent = indexContent.substring(0, startIdx) + newGrid + indexContent.substring(endIdx);
-          
           fs.writeFileSync(indexPath, indexContent);
           console.log(`Updated ${folder}/index.html with ${files.length} images.`);
       }
