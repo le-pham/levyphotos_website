@@ -17,8 +17,8 @@ if not exist "node_modules\" (
 )
 
 echo.
-echo [2/2] Scanning images and updating galleries...
-node update_galleries.js
+echo [2/2] Updating website galleries...
+npm run update
 
 echo.
 echo ---------------------------------------
