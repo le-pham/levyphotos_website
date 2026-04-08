@@ -251,6 +251,11 @@
         .contact-details a:hover {
             color: var(--accent);
         }
+
+        /* Deep linking support */
+        .nav-item-wrapper {
+            scroll-margin-top: 100px;
+        }
     </style>
 </head>
 <body>
@@ -328,18 +333,24 @@
         <!-- GALLERY GRID END -->
 
         <div class="nav-list">
-            <a id="experience" href="/instant/experience" class="nav-item">
-                <span>THE EXPERIENCE</span>
-                <span class="arrow">→</span>
-            </a>
-            <a id="investment" href="/instant/investment" class="nav-item">
-                <span>INVESTMENT & PACKAGES</span>
-                <span class="arrow">→</span>
-            </a>
-            <a id="faq" href="/instant/faq" class="nav-item">
-                <span>FREQUENTLY ASKED QUESTIONS</span>
-                <span class="arrow">→</span>
-            </a>
+            <div id="experience" class="nav-item-wrapper">
+                <a href="/instant/experience" class="nav-item">
+                    <span>THE EXPERIENCE</span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+            <div id="investment" class="nav-item-wrapper">
+                <a href="/instant/investment" class="nav-item">
+                    <span>INVESTMENT & PACKAGES</span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+            <div id="faq" class="nav-item-wrapper">
+                <a href="/instant/faq" class="nav-item">
+                    <span>FREQUENTLY ASKED QUESTIONS</span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
         </div>
 
         <div class="download-box" style="margin-top: 20px;">
