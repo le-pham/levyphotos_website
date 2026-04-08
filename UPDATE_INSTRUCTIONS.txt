@@ -1,0 +1,36 @@
+LEVY PHOTOGRAPHY - WEBSITE UPDATE GUIDE
+
+This guide explains how to add, change, or remove photos from your website.
+
+-----------------------------------------------------------
+METHOD 1: FROM YOUR COMPUTER (Standard)
+-----------------------------------------------------------
+1. ADD PHOTOS: Drop high-res images (.jpg or .png) into the 
+   correct folder under "images/" (e.g., images/wedding/).
+
+2. RUN UPDATER: Double-click the "update_site.bat" file.
+   - It creates thumbnails automatically.
+   - It updates the website code.
+   - It asks to push to the live site.
+
+3. GO LIVE: Type "y" when asked to push to GitHub.
+
+-----------------------------------------------------------
+METHOD 2: REMOTE UPDATE (From any Browser)
+-----------------------------------------------------------
+1. LOG IN: Go to github.com/le-pham/levyphotos_website
+
+2. UPLOAD/DELETE: Navigate to the category folder 
+   (e.g., images/wedding/) and use the GitHub "Add file" 
+   button to upload or delete photos.
+
+3. WAIT: In 1-2 minutes, GitHub will automatically create 
+   the thumbnails and update your live website.
+
+-----------------------------------------------------------
+IMPORTANT RULES
+-----------------------------------------------------------
+- FILENAMES: Keep names simple (wedding-10.jpg). No spaces.
+- PERMISSIONS: Ensure GitHub Settings -> Actions -> General 
+  is set to "Read and write permissions".
+- THUMBNAILS: You never need to make them; the system does it.
