@@ -293,11 +293,17 @@
             </div>
         </div>
 
-        <div class="download-box" style="margin-top: 20px;">
-            <a href="/docs/Levy instant portrait staition 2026.pdf" download class="btn-download">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                DOWNLOAD 2026 SERVICE GUIDE (PDF)
-            </a>
+        <div class="download-box" style="margin-top: 20px; background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid #333; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <h2 style="font-size: 20px; margin-top: 0; margin-bottom: 10px;">Get the 2026 Service Guide</h2>
+            <p style="opacity: 0.7; font-size: 15px; margin-bottom: 25px;">Enter your email to receive an instant download link for our full pricing and logistics guide.</p>
+            <form action="https://formspree.io/f/mvzvgvro" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                <input type="hidden" name="_subject" value="Service Guide Download Request">
+                <input type="hidden" name="_next" value="https://levyphotos.com/docs/Levy_Instant_Portrait_Station_2026.pdf">
+                <input type="email" name="email" placeholder="Your Email Address" required style="flex: 1; min-width: 200px; margin-bottom: 0; padding: 15px; font-size: 16px;">
+                <button type="submit" style="width: auto; padding: 15px 30px; font-size: 16px;">
+                    GET GUIDE (PDF)
+                </button>
+            </form>
         </div>
 
         <!-- GALLERY GRID -->
